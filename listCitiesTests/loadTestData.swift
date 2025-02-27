@@ -1,27 +1,21 @@
 //
-//  listCitiesTests.swift
+//  loadTestData.swift
 //  listCitiesTests
 //
-//  Created by priyali.srivastava on 26/02/25.
+//  Created by priyali.srivastava on 27/02/25.
 //
 
 import XCTest
-@testable import listCities
 
-final class listCitiesTests: XCTestCase {
-    var viewModel: CitiesViewModel!
-    var mockService: MockCityService!
+final class loadTestData: XCTestCase {
+
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-       // super.setUpWithError()
-        
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
-    
 
     func testExample() throws {
         // This is an example of a functional test case.
@@ -29,18 +23,6 @@ final class listCitiesTests: XCTestCase {
         // Any test you write for XCTest can be annotated as throws and async.
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-       let mockService = MockCityService()
-       let viewModel = CitiesViewModel(cityService: mockService)
-        
-        let exp = XCTestExpectation(description: "cities")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            XCTAssertFalse(viewModel.citiesByState.isEmpty, "Cities Should be loaded")
-            exp.fulfill()
-        }
-        
-        wait(for: [exp], timeout: 2.0)
-        
     }
 
     func testPerformanceExample() throws {
@@ -50,13 +32,4 @@ final class listCitiesTests: XCTestCase {
         }
     }
 
-}
-
-class MockCityService: CityServiceProtocol {
-    func fetchCities() -> [listCities.CitiesModel]? {
-        return [CitiesModel(id: UUID(), city: "Tathra", lat: "-36.7317", lng: "149.9844", country: "Australia", iso2: "AU", admin_name: "New South Wales", capital: "", population: "1675", population_proper: "1527")]
-    }
-    
-    
-    
 }
