@@ -39,7 +39,6 @@ class CitiesViewModel: ObservableObject {
     }
     func toggleReverseOrder() {
         reversed.toggle()
-        citiesByState = citiesByState.mapValues {$0.reversed()}
     }
 }
 

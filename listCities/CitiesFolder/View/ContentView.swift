@@ -14,7 +14,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(viewModel.citiesByState.keys.sorted(), id: \ .self) { state in
+                    ForEach(viewModel.reversed ? viewModel.citiesByState.keys.sorted(by: >) : viewModel.citiesByState.keys.sorted(by: <), id: \ .self) { state in
                         
                         Section(header: Text(state).onTapGesture {
                             if expandStates.contains(state){
